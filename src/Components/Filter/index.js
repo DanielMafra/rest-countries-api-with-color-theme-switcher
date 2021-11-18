@@ -11,6 +11,7 @@ const Filter = () => {
       <button onClick={() => setOpenFilter(!openFilter)}><span>Filter by Region</span><Arrow /></button>
       {openFilter && (
         <ul>
+          <li>All</li>
           <li>Africa</li>
           <li>America</li>
           <li>Asia</li>
