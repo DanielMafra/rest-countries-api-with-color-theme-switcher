@@ -1,0 +1,20 @@
+header {
+  background-color: var(--white);
+  padding: 24px 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--very-dark-blue-lm);
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
