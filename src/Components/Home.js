@@ -20,7 +20,7 @@ const Home = () => {
           </div>
           <div className={styles.items}>
             {data.map(item => {
-              return <Item key={item.name} name={item.name} population={item.population} region={item.region} capital={item.capital} flag={item.flags.svg} />
+              return <Item key={item.name} name={item.name} alpha={item.alpha2Code} population={item.population} region={item.region} capital={item.capital} flag={item.flags.svg} />
             })}
           </div>
         </div>

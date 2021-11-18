@@ -1,0 +1,10 @@
+.main {
+  background-color: var(--very-light-gray-lm);
+  padding: 114px 16px 64px 16px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
