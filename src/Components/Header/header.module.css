@@ -1,7 +1,7 @@
 header {
   background-color: var(--white);
   padding: 24px 16px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
   position: fixed;
   width: 100vw;
   top: 0;
