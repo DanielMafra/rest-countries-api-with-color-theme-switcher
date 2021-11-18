@@ -1,0 +1,33 @@
+.filter {
+  position: relative;
+}
+
+.filter > button {
+  background-color: var(--white);
+  border: none;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  gap: 24px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.08);
+}
+
+.filter > ul {
+  background-color: var(--white);
+  position: absolute;
+  top: 52px;
+  left: 0;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px;
+  width: 204.73px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.08);
+}
