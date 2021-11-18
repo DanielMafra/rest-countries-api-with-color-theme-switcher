@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route path="rest-countries-api-with-color-theme-switcher" element={<Home />} /* this route is only for use on GitHub Pages */ />
-          <Route path="/details" element={<Details />} />
+          <Route path="/:name" element={<Details />} />
         </Routes>
       </GlobalStorage>
     </BrowserRouter>

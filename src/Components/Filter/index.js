@@ -4,19 +4,19 @@ import styles from './filter.module.css';
 import { ReactComponent as Arrow } from '../../assets/arrow.svg';
 
 const Filter = () => {
-  const { openFilter, setOpenFilter } = useContext(GlobalContext);
+  const { openFilter, setOpenFilter, setRegion } = useContext(GlobalContext);
 
   return (
     <div className={styles.filter}>
       <button onClick={() => setOpenFilter(!openFilter)}><span>Filter by Region</span><Arrow /></button>
       {openFilter && (
         <ul>
-          <li>All</li>
-          <li>Africa</li>
-          <li>America</li>
-          <li>Asia</li>
-          <li>Europe</li>
-          <li>Oceania</li>
+          <li onClick={() => setRegion("all")}>All</li>
+          <li onClick={() => setRegion("africa")}>Africa</li>
+          <li onClick={() => setRegion("americas")}>Americas</li>
+          <li onClick={() => setRegion("asia")}>Asia</li>
+          <li onClick={() => setRegion("europe")}>Europe</li>
+          <li onClick={() => setRegion("oceania")}>Oceania</li>
         </ul>
       )}
     </div>
