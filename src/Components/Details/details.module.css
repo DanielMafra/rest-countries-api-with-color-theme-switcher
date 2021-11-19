@@ -124,6 +124,25 @@
   color: var(--white);
 }
 
+.loader {
+  border: 8px solid rgba(0, 0, 0, 0.2);
+  border-top: 8px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  animation: loader 1s linear infinite;
+  margin: 64px auto;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media (min-width: 720px){
   .content {
     margin-top: 64px;

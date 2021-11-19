@@ -12,10 +12,11 @@ const Details = () => {
   const [borders, setBorders] = useState([]);
   const [updateData, setUpdateData] = useState('');
   const { name } = useParams();
-  const { darkTheme } = useContext(GlobalContext);
+  const { darkTheme, loading, setLoading } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   useEffect(async () => {
+    setLoading(true);
     const response = await fetch(`https://restcountries.com/v2/alpha/${name}`)
     const json = await response.json();
     !json.status && setData(json);
@@ -34,7 +35,8 @@ const Details = () => {
   }, [updateData]);
 
   useEffect(async () => {
-    data != '' && data.currencies.map(currency => {
+    setLoading(true);
+    data != '' && data.currencies !== undefined && data.currencies.map(currency => {
       setCurrencies(oldArray => [...oldArray, currency.name]);
     });
     data != '' && data.languages.map(lang => {
@@ -45,6 +47,7 @@ const Details = () => {
       const json = await response.json();
       !json.status && setBorders(oldArray => [...oldArray, json]);
     })
+    setLoading(false);
   }, [data]);
 
   return (
@@ -54,38 +57,42 @@ const Details = () => {
         <main className={`${styles.main} ${darkTheme ? styles.mainDark : styles.mainLight}`}>
           <div className={`${styles.container} ${darkTheme ? styles.containerDark : styles.containerLight}`}>
             <button aria-label="Back to Home" onClick={() => navigate("/")}><Back /><span>Back</span></button>
-            <div className={styles.content}>
-              <img src={`${data.flags.svg}`} alt="" />
-              <div>
-                <div className={`${styles.infos} ${darkTheme ? styles.infosDark : styles.infosLight}`}>
-                  <h2>{data.name}</h2>
-                  <div className={styles.columns}>
-                    <div className={styles.column}>
-                      <span><strong>Native Name:</strong> {data.nativeName}</span>
-                      <span><strong>Population:</strong> {data.population.toLocaleString()}</span>
-                      <span><strong>Region:</strong> {data.region}</span>
-                      <span><strong>Sub Region:</strong> {data.subregion}</span>
-                      <span><strong>Capital:</strong> {data.capital}</span>
-                    </div>
-                    <div className={styles.column}>
-                      <span><strong>Top Level Domain:</strong> {data.topLevelDomain}</span>
-                      <span><strong>Currencies:</strong> {currencies.join(', ')}</span>
-                      <span><strong>Languages:</strong> {languages.join(', ')}</span>
+            {loading ? (
+              <div className={styles.loader}></div>
+            ) : (
+              <div className={styles.content}>
+                <img src={`${data.flags.svg}`} alt="" />
+                <div>
+                  <div className={`${styles.infos} ${darkTheme ? styles.infosDark : styles.infosLight}`}>
+                    <h2>{data.name}</h2>
+                    <div className={styles.columns}>
+                      <div className={styles.column}>
+                        <span><strong>Native Name:</strong> {data.nativeName}</span>
+                        <span><strong>Population:</strong> {data.population.toLocaleString()}</span>
+                        <span><strong>Region:</strong> {data.region}</span>
+                        <span><strong>Sub Region:</strong> {data.subregion}</span>
+                        <span><strong>Capital:</strong> {data.capital}</span>
+                      </div>
+                      <div className={styles.column}>
+                        <span><strong>Top Level Domain:</strong> {data.topLevelDomain}</span>
+                        <span><strong>Currencies:</strong> {currencies.join(', ')}</span>
+                        <span><strong>Languages:</strong> {languages.join(', ')}</span>
+                      </div>
                     </div>
                   </div>
+                  {borders != '' && (
+                    <div className={styles.borders}>
+                      <strong className={darkTheme ? styles.dark : styles.light}>Border Countries:</strong>
+                      <div className={`${styles.list} ${darkTheme ? styles.listDark : styles.listWhite}`}>
+                        {borders.map(border => {
+                          return <button aria-label={`Details about ${border.name}`} key={border.alpha2Code} onClick={() => setUpdateData(border.alpha2Code)}>{border.name}</button>
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                {borders != '' && (
-                  <div className={styles.borders}>
-                    <strong className={darkTheme ? styles.dark : styles.light}>Border Countries:</strong>
-                    <div className={`${styles.list} ${darkTheme ? styles.listDark : styles.listWhite}`}>
-                      {borders.map(border => {
-                        return <button aria-label={`Details about ${border.name}`} key={border.alpha2Code} onClick={() => setUpdateData(border.alpha2Code)}>{border.name}</button>
-                      })}
-                    </div>
-                  </div>
-                )}
               </div>
-            </div>
+            )}
           </div>
         </main>
       )}
