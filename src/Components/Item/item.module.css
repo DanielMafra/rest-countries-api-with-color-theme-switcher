@@ -30,3 +30,9 @@
   padding-bottom: 16px;
   overflow: hidden;
 }
+
+@media (min-width: 658px){
+  .item {
+    min-width: auto;
+  }
+}

@@ -21,3 +21,29 @@
   grid-template-columns: 1fr;
   gap: 64px;
 }
+
+@media (min-width: 658px){
+  .items {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 890px){
+  .items {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1148px){
+  .items {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px){
+  .search {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+}
