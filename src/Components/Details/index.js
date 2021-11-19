@@ -51,7 +51,7 @@ const Details = () => {
       {data != '' && (
         <main className={styles.main}>
           <div className={styles.container}>
-            <button onClick={() => navigate("/")}><Back /><span>Back</span></button>
+            <button aria-label="Back to Home" onClick={() => navigate("/")}><Back /><span>Back</span></button>
             <div className={styles.content}>
               <img src={`${data.flags.svg}`} alt="" />
               <div>
@@ -77,7 +77,7 @@ const Details = () => {
                     <strong>Border Countries:</strong>
                     <div className={styles.list}>
                       {borders.map(border => {
-                        return <button key={border.alpha2Code} onClick={() => setUpdateData(border.alpha2Code)}>{border.name}</button>
+                        return <button aria-label={`Details about ${border.name}`} key={border.alpha2Code} onClick={() => setUpdateData(border.alpha2Code)}>{border.name}</button>
                       })}
                     </div>
                   </div>
