@@ -10,6 +10,7 @@ export const GlobalStorage = ({ children }) => {
   const [darkTheme, setDarkTheme] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  //fetch all location data and render on home
   useEffect(async () => {
     const theme = localStorage.getItem("theme");
     if (theme === "true") {
@@ -23,6 +24,7 @@ export const GlobalStorage = ({ children }) => {
     setLoading(false);
   }, []);
 
+  //create a new render applying the region filter
   useEffect(async () => {
     setLoading(true);
     if (region !== "all") {
@@ -40,6 +42,7 @@ export const GlobalStorage = ({ children }) => {
     }
   }, [region]);
 
+  //create a new render applying the user search
   useEffect(async () => {
     if (search && search.length >= 3) {
       setLoading(true);
@@ -56,6 +59,7 @@ export const GlobalStorage = ({ children }) => {
     }
   }, [search]);
 
+  //apply theme config
   useEffect(() => {
     localStorage.setItem("theme", darkTheme);
   }, [darkTheme]);

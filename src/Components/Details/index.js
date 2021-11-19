@@ -15,6 +15,7 @@ const Details = () => {
   const { darkTheme, loading, setLoading } = useContext(GlobalContext);
   const navigate = useNavigate();
 
+  //fetch location clicked by user on home
   useEffect(async () => {
     setLoading(true);
     const response = await fetch(`https://restcountries.com/v2/alpha/${name}`)
@@ -34,6 +35,7 @@ const Details = () => {
     }
   }, [updateData]);
 
+  //define languages, currencies and location borders
   useEffect(async () => {
     setLoading(true);
     data != '' && data.currencies !== undefined && data.currencies.map(currency => {
