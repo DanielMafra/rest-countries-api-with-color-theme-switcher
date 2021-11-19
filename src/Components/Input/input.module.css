@@ -7,6 +7,15 @@
   background: url("../../assets/search.svg") no-repeat 24px;
 }
 
+.inputLight {
+  background-color: var(--white);
+}
+
+.inputDark {
+  background-color: var(--dark-blue-dm);
+  color: var(--white);
+}
+
 .input::placeholder{
   color: var(--dark-gray-lm);
 }

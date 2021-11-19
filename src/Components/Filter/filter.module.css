@@ -3,7 +3,6 @@
 }
 
 .filter > button {
-  background-color: var(--white);
   border: none;
   display: flex;
   align-items: center;
@@ -16,8 +15,29 @@
   cursor: pointer;
 }
 
-.filter > ul {
+.filterLight > button {
   background-color: var(--white);
+}
+
+.filterDark > button {
+  background-color: var(--dark-blue-dm);
+  color: var(--white);
+}
+
+.filterDark > button > svg > path {
+  stroke: var(--white);
+}
+
+.filterLight > ul {
+  background-color: var(--white);
+}
+
+.filterDark > ul {
+  background-color: var(--dark-blue-dm);
+  color: var(--white);
+}
+
+.filter > ul {
   position: absolute;
   top: 52px;
   left: 0;

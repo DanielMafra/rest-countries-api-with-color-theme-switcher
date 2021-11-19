@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../../Contexts/GlobalContext';
 import styles from './details.module.css';
 import Header from '../Header/index';
 import { ReactComponent as Back } from '../../assets/back.svg';
@@ -11,6 +12,7 @@ const Details = () => {
   const [borders, setBorders] = useState([]);
   const [updateData, setUpdateData] = useState('');
   const { name } = useParams();
+  const { darkTheme } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   useEffect(async () => {
@@ -49,13 +51,13 @@ const Details = () => {
     <>
       <Header />
       {data != '' && (
-        <main className={styles.main}>
-          <div className={styles.container}>
+        <main className={`${styles.main} ${darkTheme ? styles.mainDark : styles.mainLight}`}>
+          <div className={`${styles.container} ${darkTheme ? styles.containerDark : styles.containerLight}`}>
             <button aria-label="Back to Home" onClick={() => navigate("/")}><Back /><span>Back</span></button>
             <div className={styles.content}>
               <img src={`${data.flags.svg}`} alt="" />
               <div>
-                <div className={styles.infos}>
+                <div className={`${styles.infos} ${darkTheme ? styles.infosDark : styles.infosLight}`}>
                   <h2>{data.name}</h2>
                   <div className={styles.columns}>
                     <div className={styles.column}>
@@ -74,8 +76,8 @@ const Details = () => {
                 </div>
                 {borders != '' && (
                   <div className={styles.borders}>
-                    <strong>Border Countries:</strong>
-                    <div className={styles.list}>
+                    <strong className={darkTheme ? styles.dark : styles.light}>Border Countries:</strong>
+                    <div className={`${styles.list} ${darkTheme ? styles.listDark : styles.listWhite}`}>
                       {borders.map(border => {
                         return <button aria-label={`Details about ${border.name}`} key={border.alpha2Code} onClick={() => setUpdateData(border.alpha2Code)}>{border.name}</button>
                       })}

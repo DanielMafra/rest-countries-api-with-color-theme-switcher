@@ -1,7 +1,14 @@
 .main {
-  background-color: var(--very-light-gray-lm);
   padding: 114px 16px 64px 16px;
   min-height: 100vh;
+}
+
+.mainLight {
+  background-color: var(--very-light-gray-lm);
+}
+
+.mainDark {
+  background-color: var(--very-dark-blue-dm);
 }
 
 .container {
@@ -14,11 +21,23 @@
   align-items: center;
   padding: 6px 16px;
   border: 0;
-  background-color: var(--white);
-  color: var(--very-dark-blue-lm);
   border-radius: 4px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.08);
   cursor: pointer;
+}
+
+.containerLight > button {
+  background-color: var(--white);
+  color: var(--very-dark-blue-lm);
+}
+
+.containerDark > button {
+  background-color: var(--dark-blue-dm);
+  color: var(--white);
+}
+
+.containerDark > button > svg > path {
+  stroke: var(--white);
 }
 
 .container > button > span {
@@ -32,6 +51,14 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+.infosLight {
+  color: var(--very-dark-blue-lm);
+}
+
+.infosDark {
+  color: var(--white);
 }
 
 .infos > h2 {
@@ -64,6 +91,14 @@
   margin-bottom: 16px;
 }
 
+.light {
+  color: var(--very-dark-blue-lm);
+}
+
+.dark {
+  color: var(--white);
+}
+
 .list {
   display: flex;
   flex-wrap: wrap;
@@ -73,12 +108,20 @@
 .list > button {
   padding: 6px 12px;
   border: 0;
-  background-color: var(--white);
-  color: var(--very-dark-blue-lm);
   border-radius: 4px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.08);
   font-size: 14px;
   cursor: pointer;
+}
+
+.listLight > button {
+  background-color: var(--white);
+  color: var(--very-dark-blue-lm);
+}
+
+.listDark > button {
+  background-color: var(--dark-blue-dm);
+  color: var(--white);
 }
 
 @media (min-width: 720px){

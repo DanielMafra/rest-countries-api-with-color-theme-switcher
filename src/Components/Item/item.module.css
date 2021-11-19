@@ -21,7 +21,6 @@
 }
 
 .item {
-  background-color: var(--white);
   min-width: 70vw;
   max-width: 70vw;
   margin: 0 auto;
@@ -30,6 +29,16 @@
   padding-bottom: 16px;
   overflow: hidden;
   cursor: pointer;
+}
+
+.itemLight {
+  background-color: var(--white);
+  color: var(--very-dark-blue-lm);
+}
+
+.itemDark {
+  background-color: var(--dark-blue-dm);
+  color: var(--white);
 }
 
 @media (min-width: 658px){

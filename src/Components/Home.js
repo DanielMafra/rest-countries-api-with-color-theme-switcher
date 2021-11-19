@@ -7,12 +7,12 @@ import Filter from './Filter/index';
 import Item from './Item/index';
 
 const Home = () => {
-  const { data } = useContext(GlobalContext);
+  const { data, darkTheme } = useContext(GlobalContext);
 
   return (
     <>
       <Header />
-      <main className={styles.main}>
+      <main className={`${styles.main} ${darkTheme ? styles.mainDark : styles.mainLight}`}>
         <div className={styles.container}>
           <div className={styles.search}>
             <Input />

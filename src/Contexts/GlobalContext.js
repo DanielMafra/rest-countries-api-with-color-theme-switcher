@@ -7,8 +7,15 @@ export const GlobalStorage = ({ children }) => {
   const [data, setData] = useState([]);
   const [region, setRegion] = useState("all");
   const [search, setSearch] = useState('');
+  const [darkTheme, setDarkTheme] = useState(false);
 
   useEffect(async () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "true") {
+      setDarkTheme(true);
+    } else {
+      setDarkTheme(false);
+    }
     const response = await fetch("https://restcountries.com/v2/all");
     const json = await response.json();
     setData(json);
@@ -40,8 +47,12 @@ export const GlobalStorage = ({ children }) => {
     }
   }, [search]);
 
+  useEffect(() => {
+    localStorage.setItem("theme", darkTheme);
+  }, [darkTheme]);
+
   return (
-    <GlobalContext.Provider value={{ openFilter, setOpenFilter, data, setRegion, search, setSearch }}>
+    <GlobalContext.Provider value={{ openFilter, setOpenFilter, data, setRegion, search, setSearch, darkTheme, setDarkTheme }}>
       {children}
     </GlobalContext.Provider>
   );
